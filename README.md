@@ -29,5 +29,4 @@ file list:
   Train.py: Training method for classifier and generator, and synthetizing artificial samples.
   
   EarlyStopping.py: EarlyStopping strategy used in training stage
-  
-  A01_data_All.npy and A01_label_All.npy: Dataset for A01 subject.
+
