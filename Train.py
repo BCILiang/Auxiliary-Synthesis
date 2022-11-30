@@ -195,5 +195,5 @@ def synthesis_samples(data, label, ratio=2, ep=300, batch=16, alpha=1.0, beta=0.
     while len(syn_label) < ratio * len(label):
         new_data, new_label = train_generator(data, label, ep=ep, batch=batch, alpha=alpha, beta=beta)
         syn_data = np.concatenate([syn_data, new_data])
-        syn_label = np.concatenate([syn_data, new_label])
+        syn_label = np.concatenate([syn_label, new_label])
     return syn_data, syn_label
