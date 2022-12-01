@@ -14,7 +14,7 @@ def framework_pipeline():
     # Getting artificial samples and concatenating with real samples
     aug_data, aug_label = synthesis_samples(train_x, train_y, ratio=2)
     print('Number of synthesised data: %d' % len(aug_data))
-    train_x_aug = np.concatenate([train_x.swapaxes(1, 2), aug_data])
+    train_x_aug = np.concatenate([train_x, aug_data.swapaxes(1, 2)])
     train_y_aug = np.concatenate([train_y, aug_label])
 
     # Retraining the decoder with all samples and testing
