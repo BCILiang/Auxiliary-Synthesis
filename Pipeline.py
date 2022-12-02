@@ -6,7 +6,7 @@ from Train import train_decoder, synthesis_samples
 from sklearn.model_selection import train_test_split
 
 
-def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=300, batch=16, alpha=1, beta=0.0001):
+def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=200, batch=16, alpha=1, beta=0.0001):
     """
         Synthesis different ratio artificial samples
     input:
