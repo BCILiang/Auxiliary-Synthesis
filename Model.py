@@ -95,10 +95,9 @@ class Generator6Layer(nn.Module):
             ),
         )
 
-    def forward(self, z, lab, num, last=False):
+    def forward(self, z, lab):
         lab = self.label_emb(lab)
-        bs = num if last else 16
-        lab = lab.view(bs, 1, 1, 1)
+        lab = lab.view(z.shape[0], 1, 1, 1)
         out = torch.cat((lab, z), dim=1)
         out = self.layer1(out)
         out = self.layer2(out)
