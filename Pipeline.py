@@ -45,4 +45,4 @@ datasetY = np.load('A01_label_All.npy')
 train_data, test_data, train_label, test_label = train_test_split(datasetX, datasetY, test_size=0.15, shuffle=True, random_state=0)
 
 # Enhancing
-framework_pipeline(train_data, train_label, test_data, test_label, 0.70)
+framework_pipeline(train_data, train_label, test_data, test_label, 0.65)
