@@ -30,7 +30,10 @@ file list:
   
   EarlyStopping.py: EarlyStopping strategy used in training stage
   
+  
  dataset branch：
+ 
    A01_data_All.npy
+   
    A01_label_All.npy
 
