@@ -26,7 +26,7 @@ def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=
     pre_test_acc, pre_train_acc = 0, 0
     while pre_test_acc <= s_hold:
         pre_train_acc, pre_test_acc = train_decoder(train_x, train_y, test_x, test_y, ep=epoch, batch=batch)
-        print('Raw accuracy: Train: %.4f%% | Test: %.4f%%' % (pre_train_acc, pre_test_acc))
+        print('Raw accuracy: Train: %.4f%% | Test: %.4f%%' % (pre_train_acc*100, pre_test_acc*100))
 
     # Getting artificial samples and concatenating with real samples
     aug_data, aug_label = synthesis_samples(train_x, train_y, ratio=ratio, ep=epoch, batch=batch, alpha=alpha, beta=beta)
@@ -37,7 +37,7 @@ def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=
     # Retraining the decoder with all samples and testing
     train_acc, test_acc = train_decoder(train_x_aug, train_y_aug, test_x, test_y)
     print('Raw accuracy: Train: %.4f%% | Test: %.4f%% \n'
-          'Enhanced accuracy: Train: %.4f%% | Test: %.4f%%' % (pre_train_acc, pre_test_acc, train_acc, test_acc))
+          'Enhanced accuracy: Train: %.4f%% | Test: %.4f%%' % (pre_train_acc*100, pre_test_acc*100, train_acc*100, test_acc*100))
 
 
 # Getting real samples and normalization
