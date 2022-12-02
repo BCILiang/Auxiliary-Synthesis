@@ -4,9 +4,10 @@ An example for the pipeline pf Auxiliary Synthesis Framework.
 import numpy as np
 from Train import train_decoder, synthesis_samples
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 
-def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=200, batch=16, alpha=1, beta=0.0001):
+def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=500, batch=16, alpha=1, beta=0.0001):
     """
         Synthesis different ratio artificial samples
     input:
@@ -43,6 +44,15 @@ def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=
 datasetX = np.load('A01_data_All.npy')
 datasetY = np.load('A01_label_All.npy')
 train_data, test_data, train_label, test_label = train_test_split(datasetX, datasetY, test_size=0.15, shuffle=True, random_state=0)
+
+train_data = train_data.reshape([-1, 22])
+scale = StandardScaler().fit(train_data)
+train_data = scale.transform(train_data)
+train_data = train_data.reshape([-1, 1000, 22])
+
+test_data = test_data.reshape([-1, 22])
+test_data = scale.transform(test_data)
+test_data = test_data.reshape([-1, 1000, 22])
 
 # Enhancing
 framework_pipeline(train_data, train_label, test_data, test_label, 0.65)
