@@ -137,7 +137,7 @@ def train_generator(data, label, ep=300, batch=16, alpha=1.0, beta=0.0001):
     aug_set = []
     aug_lab = []
     for epoch in range(ep):
-        # Train decoder
+        # Train generator
         loss = 0
         train_loss = 0
         correct = 0
