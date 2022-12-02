@@ -147,10 +147,10 @@ def train_generator(data, label, ep=300, batch=16, alpha=1.0, beta=0.0001):
             num = len(data) - (len(train_loader) - 1) * batch
             if batch_idx != len(train_loader) - 1:
                 nz = z[batch_idx * batch:batch_idx * batch + batch]
-                outputs_g = g(nz, targets, num, last=False)
+                outputs_g = g(nz, targets)
             else:
                 nz = z[batch_idx * batch:]
-                outputs_g = g(nz, targets, num, last=True)
+                outputs_g = g(nz, targets)
             outputs_a = a(outputs_g)
             loss = (alpha * mse(outputs_g, inputs) + beta * cross(outputs_a, targets)) / 2
             loss.backward()
