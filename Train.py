@@ -144,7 +144,6 @@ def train_generator(data, label, ep=300, batch=16, alpha=1.0, beta=0.0001):
         total = 0
         for batch_idx, (inputs, targets) in enumerate(train_loader):
             optimizer.zero_grad()
-            num = len(data) - (len(train_loader) - 1) * batch
             if batch_idx != len(train_loader) - 1:
                 nz = z[batch_idx * batch:batch_idx * batch + batch]
                 outputs_g = g(nz, targets)
