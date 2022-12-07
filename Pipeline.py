@@ -43,7 +43,7 @@ def framework_pipeline(train_x, train_y, test_x, test_y, s_hold, ratio=2, epoch=
 # Getting real samples and normalization
 datasetX = np.load('A01_data_All.npy')
 datasetY = np.load('A01_label_All.npy')
-train_data, test_data, train_label, test_label = train_test_split(datasetX, datasetY, test_size=0.3, shuffle=True, random_state=0)
+train_data, test_data, train_label, test_label = train_test_split(datasetX, datasetY, test_size=0.3, shuffle=True, random_state=0, stratify=datasetY)
 
 train_data = train_data.reshape([-1, 22])
 scale = StandardScaler().fit(train_data)
